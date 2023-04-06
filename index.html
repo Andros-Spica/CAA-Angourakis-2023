@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Simulation in the age of machine learning</title>
+
+		<meta name="description" content="Made with Reveal.JS, A framework for easily creating beautiful presentations using HTML, by Hakim El Hattab">
+		<meta name="author" content="Andreas Angourakis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="reveal.js-master/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/theme/league.css" id="theme">
+		
+		<!-- Custom modifications to structure slides -->
+		<link rel="stylesheet" href="myMods.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js-master/plugin/highlight/zenburn.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+            	<section data-state="title-page">
+					<h3>Simulation in the age of machine learning</h3>
+					
+					<a href="https://reform.ressourcencampus-bochum.de/en/the-people-behind-reform/" target="_blank">Andreas <b>Angourakis</b></a> | <a href="https://twitter.com/AndrosSpica" target="_blank">@AndrosSpica</a>
+					<br><br>
+
+					<div style="font-size: 50%">available at 
+						<a href="https://andros-spica.github.io/CAA-Angourakis-2023/" target="_blank">https://andros-spica.github.io/CAA-Angourakis-2023/</a>
+						<br>
+						<a href="https://andros-spica.github.io/CAA-Angourakis-2023/index.html?print-pdf" target="_blank">https://andros-spica.github.io/CAA-Angourakis-2023/index.html?print-pdf</a> (printable version)
+					</div>
+					<br>
+					
+					<div id="left50">
+						<figure>
+							<img src="https://reform.ressourcencampus-bochum.de/wp-content/uploads/2022/03/cropped-Reform_Logo_invers_RGB.png" alt="ReForm logo"
+					style="width: 250px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+						<figcaption style="font-size:30%; color: orange;">reform.ressourcencampus-bochum.de</figcaption>
+						</figure>
+						<img src="images/NASSA-logo.png" alt="Logos" 
+						style="width: 250px; border: none; box-shadow: none;"/>
+
+					</div>
+					
+					<div id="right30" style="background-color:#17365c;">
+						<img src="https://services.ruhr-uni-bochum.de/themes/custom/rub/logo.svg" alt="RUB logo"
+					style="width: 250px; border: none; box-shadow: none;"/> &nbsp;
+					</div>
+					<div id="right30">
+						<img src="https://reform.ressourcencampus-bochum.de/wp-content/uploads/2022/02/Image20211019144937-2-2000x1639.jpg" alt="Leipzig logo"
+					style="width: 100px; border: none; box-shadow: none;"/> &nbsp;
+					</div>
+					
+				</section>
+				
+				<section>
+					<h3>Outline</h3>
+					<div id="left70">
+						<ol style="font-size: 66%;">
+							<li>Simulation versus machine learning?</li>
+							<li>Simulation + machine learning &rightarrow; &nbsp;examples</li>
+							<li>Implications</li>
+							<li>Conclusions</li>
+						</ol>
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<h3>1. Simulation versus machine learning?</h3>
+					</section>
+
+					<section>
+						<h4>An "Age" of machine learning</h4>
+						<div id="left50" style="font-size: 50%">
+							<ul>
+								<li class="fragment">Deep learning made Artificial Intelligence pop (again)</li>
+								<br>
+								<li class="fragment">Data Science, Big Data and low-cost/high-performance computing</li>
+								<br>
+								<li class="fragment">Simulation associated to "old" Artificial Intelligence"</li>
+								<br>
+								<li class="fragment">Modelling is a fitness contest? (pun intended)</li>
+								<br>
+								<li class="fragment">When to use: purposes and context</li>
+								<br>
+								<li class="fragment">Simulation in archaeology:<br>"Can you validate your model?"*
+									<br>
+									<p style="font-size: 80%;">
+										Epstein, J. M. (2008). Why Model? Journal of Artificial Societies and Social Simulation, 11(4), 12.
+									</p>
+								</li>
+							</ul>
+							
+						</div>
+
+						<div id="right50">
+							<figure>
+								<img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*hzlEivP2DV2dM3ZAiKuB-w.jpeg" alt="AI hype vs reality"
+						style="width: 500px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure; opacity: 80%;"/>
+								<figcaption style="font-size: 30%">
+									Flovik, V. (2023, January 25).<br>
+									Machine Learning: From hype to real-world applications. Medium. 
+									<a href="https://towardsdatascience.com/machine-learning-from-hype-to-real-world-applications-69de7afb56b6">(Link)</a>
+								</figcaption>
+							</figure>
+						</div>
+					</section>
+
+					<section>
+						<div id="left30">
+							<h4> <i style="color: orange">Epistemological context</i><br>how similar or different are Machine Learning and simulation models?</h4>
+						</div>
+						
+						<div id="right70">
+							<div class="r-stack">
+								<img src="images/from-model-to-simulation-model_p1.png" alt="models to math models"
+						style="width: 550px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+								<img src="images/from-model-to-simulation-model_p2.png" alt="types of math models" class="fragment"
+						style="width: 550px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+							</div>
+							<p style="font-size: 30%; text-align: center;">Icon assets from "The Noun Project" (<a href="https://thenounproject.com/">thenounproject.com</a>)</p>
+						</div>
+						
+					</section>
+						
+					<section>
+						<table>
+							<tbody>
+								<tr>
+									<td></td>
+									<td><b style="color: orange;">Input</b></td>
+									<td><b style="color: orange;">Model</b></td>
+									<td><b style="color: orange;">Output</b></td>
+								</tr>
+								<tr>
+									<td><b style="color: orange;">Machine Learning</b></td>
+									<td style="font-style: italic;">known</td>
+									<td style="font-style: italic;">learned<br><i style="font-size: 60%">after implementation</i></td>
+									<td style="font-style: italic;">predicted<br><i style="font-size: 60%">after training</i></td>
+								</tr>
+								<tr>
+									<td><b style="color: orange;">Simulation</b></td>
+									<td style="font-style: italic;">known+assumed<br><i style="font-size: 60%">values, probability distributions</i></td>
+									<td style="font-style: italic;">known<br><i style="font-size: 60%">before implementation</i></td>
+									<td style="font-style: italic;">learned<br><i style="font-size: 60%">after iterations</i></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>2. Simulation + Machine Learning</h3>
+					</section>
+
+					<section>
+						<h4>Moving forward...</h4>
+						<p class="fragment">If both approaches serve different epistemological purposes, why should we choose one or the other?</p>
+						<p class="fragment">How simulation and Machine Learning can be combined instead?</p>
+					</section>
+
+					<section>
+						<div class="r-stack">
+							<img src="images/Simulation-and-ML.png" alt="simulation and ML"
+					style="width: 800px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+							<img src="images/Simulation-and-ML_emph.png" alt="simulation and ML - emphasis on examples" class="fragment"
+					style="width: 800px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+						</div>
+						<p style="font-size: 30%; text-align: center;">Icon assets from "The Noun Project" (<a href="https://thenounproject.com/">thenounproject.com</a>)</p>
+					</section>
+
+					<section>
+						<div id="left50" style="font-size: 80%;">
+							
+							<h4>Simulation for the creation of training datasets</h4>
+
+							<p>Simulation datasets are (potentially) "Big Data"</p>
+
+							<p style="font-size: 50%;">
+								Jareño, S. J. N., Helden, D. P. van, Mirkes, E. M., Tyukin, I. Y., & Allison, P. M. (2021). Learning from Scarce Information: Using Synthetic Data to Classify Roman Fine Ware Pottery. Entropy, 23(9). <a href="https://doi.org/10.3390/e23091140">10.3390/e23091140</a>
+							</p>
+
+							<ul style="font-size: 60%;">
+								<li>5373 images of 162 <i>terra sigilata</i> from Roman Britain</li>
+								<li>A classification problem</li>
+								<li>Simulation (or procedural generation) of 1000+ images per class using Matplotlib and Blender (experimentation)</li>
+								<li>Taking advantage of deep learning, while minimising curse of dimensionality</li>
+							</ul>
+						</div>
+
+						<div id="right50">
+							<figure>
+								<img src="https://www.mdpi.com/entropy/entropy-23-01140/article_deploy/html/images/entropy-23-01140-g008-550.jpg" alt="Jareño et al. 2021 - Fig. 8"
+							style="width: 150px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+							<img src="https://www.mdpi.com/entropy/entropy-23-01140/article_deploy/html/images/entropy-23-01140-g009-550.jpg" alt="Jareño et al. 2021 - Fig. 9"
+							style="width: 300px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+								<figcaption style="font-size: 60%;">
+									Jareño et al. 2021, Fig. 8 and 9
+								</figcaption>
+							</figure>
+						</div>
+						
+					</section>
+
+					<section>
+						<div id="left50" style="font-size: 80%;">
+							
+							<h4>Machine Learning for model selection<br>+ pattern detection in output<br>+ parameter calibration and optimisation</h4>
+
+							<p>Cane turns into cannon!</p>
+
+							<p style="font-size: 50%;">
+								Carrignon, S., Brughmans, T., & Romanowska, I. (2020). Tableware trade in the Roman East: Exploring cultural and economic transmission with agent-based modelling and approximate Bayesian computation. PLOS ONE, 15(11), e0240414. <a href="https://doi.org/10.1371/journal.pone.0240414">10.1371/journal.pone.0240414</a>
+							</p>
+
+							<ul style="font-size: 60%;">
+								<li>Trade of tableware from eastern Mediterranean (Hellenistic and Roman periods)</li>
+								<li>8730 fragments, 5 types, 178 sites (presence/absence per type-site)</li>
+								<li>A cultural evolution problem</li>
+								<li>Simulation of cultural transmission algorithms (three hypotheses) coupled with a market economy model, producing spatial distributions of cultural traits of traders of each settlement</li>
+								<li>Stochastic exploration of parameter space for each algorithm, evaluated in light of empirical data, through Approximate Bayesian Computation (ABC) + Population Monte Carlo (ABCPMC)</li>
+							</ul>
+						</div>
+
+						<div id="right50">
+							<br><br>
+							<figure>
+								<img src="https://journals.plos.org/plosone/article/figure/image?size=inline&id=10.1371/journal.pone.0240414.g002" alt="Carrignon et al. 2020 - Fig. 2"
+							style="width: 150px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+							<br>
+							<img src="https://journals.plos.org/plosone/article/figure/image?size=inline&id=10.1371/journal.pone.0240414.g005" alt="Carrignon et al. 2020 - Fig. 5"
+							style="width: 250px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+								<figcaption style="font-size: 60%;">
+									Carrignon et al. 2020, Fig. 2 and 5
+								</figcaption>
+							</figure>
+						</div>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>3. Implications</h3>
+					</section>
+
+					<section>
+						<h4>Implications for simulation of the past</h4>
+
+						<div id="left40">
+							<img src="https://thecomplexityproject.com/wp-content/uploads/2020/10/flowchartcartoon.png" alt="untractable problem"/>
+						</div>
+						<div id="right60" style="font-size: 80%;">
+						Tractability of complex processes:
+						<ul>
+							<li>More domains, true transdisciplinary (design)</li>
+							<li>Faster workflow (implementation, optimisation)</li>
+							<li>Higher computability (size)</li>
+							<li>Better calibration (input data)</li>
+							<li>More expressive results (analysis)</li>
+						</ul>
+						<br><br>
+						Caveat: high computational costs!
+					</div>
+					</section>
+						
+					<section>
+						<h4>Implications for achieving UN Goals</h4>
+						
+						<div id="left50" style="font-size: 60%;">
+							UN Goals as technical problems:
+							<ul style="font-size: 80%;">
+								<li>Ecology, Agriculture and Environmental Sciences (high availability of present-day input data)</li>
+								<li>Feasibility of building digital twins of socioecological systems</li>
+								<li>Logistics optimisation</li>
+								<li>Proposal and explanation of evidence-based action/policy plans</li>
+							</ul>
+						</div>
+						<div id="right50" style="font-size: 60%;">
+							UN Goals as collective action problems:<br>
+							<ul style="font-size: 80%;">
+								<li>Take full advantage of demographic and econometric data</li>
+								<li>Grounding global behavioural models and algorithms on live behaviour</li>
+								<li>Faster and more reliable exploration of social change scenarios</li>
+								<li>Faster response to crises (with human reasoning)</li>
+							</ul>
+						</div>
+						<img src="https://gcnetherlands.nl/wp-content/uploads/2019/07/SDG-Poster-emblem-Sustainable-duurzaam.png" alt="17 UN Goals"
+							style="width: 400px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+					</section>
+
+					<section>
+						<h4>Wonderful (scary) thought</h4>
+						<div id="left50">
+							<figure>
+								<img src="https://physics.mit.edu/wp-content/uploads/2021/06/20200129_matrix-corridor-aspect-ratio-516-475-516x475-c-default.jpg" alt="matrix the movie simulation"/>
+								<figcaption style="font-size: 30%;">Still from The Matrix. Credit: Animal Logic/Warner Bros. Pictures</figcaption>
+							</figure>
+						</div>
+						<div id="right50">
+							<p>
+								(social) simulation as a component for building more efficient decision-making AI.
+							</p>
+							<p>
+								Policy magic worker, perverse marketer or puppet master?   
+							</p>
+						</div>
+						
+					</section>
+
+				</section>
+
+				<section>
+					<h3>4. Conclusions</h3>
+					<ul>
+						<li class="fragment">Mechanism/explanation is not a negligible part of mathematical models</li>
+						<li class="fragment">Don't just compare (fitness fever), combine or complement</li>
+						<li class="fragment">Archaeology: deep-time data, but also mediation other hypothesis-rich and data-rich disciplines and fields</li>
+						<li class="fragment">Simulation workflow to be dramatically changed (e.g. ChatGPT)</li>
+						<li class="fragment">Simulation-ML: promising avenue of future AI development</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Thank you for the attention!</h3>
+					
+					<a href="https://reform.ressourcencampus-bochum.de/en/the-people-behind-reform/" target="_blank">Andreas <b>Angourakis</b></a> | <a href="https://twitter.com/AndrosSpica" target="_blank">@AndrosSpica</a>
+					<br><br>
+
+					(INSERT HYPE, TECHY IMAGE HERE)
+
+					<br><br>
+					
+					<div id="left50">
+						<figure>
+							<img src="https://reform.ressourcencampus-bochum.de/wp-content/uploads/2022/03/cropped-Reform_Logo_invers_RGB.png" alt="ReForm logo"
+					style="width: 250px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+						<figcaption style="font-size:30%; color: orange;">reform.ressourcencampus-bochum.de</figcaption>
+						</figure>
+						<img src="images/NASSA-logo.png" alt="Logos" 
+						style="width: 250px; border: none; box-shadow: none;"/>
+
+					</div>
+					
+					<div id="right30" style="background-color:#17365c;">
+						<img src="https://services.ruhr-uni-bochum.de/themes/custom/rub/logo.svg" alt="RUB logo"
+					style="width: 250px; border: none; box-shadow: none;"/> &nbsp;
+					</div>
+					<div id="right30">
+						<img src="https://reform.ressourcencampus-bochum.de/wp-content/uploads/2022/02/Image20211019144937-2-2000x1639.jpg" alt="Leipzig logo"
+					style="width: 100px; border: none; box-shadow: none;"/> &nbsp;
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js-master/dist/reveal.js"></script>
+        <script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="reveal.js-master/plugin/search/search.js"></script>
+		<script src="reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+
+		<script src="reveal.js-menu/menu.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/plugin.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/RecordRTC.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/recorder.js"></script>
+
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				mouseWheel: true,
+				slideNumber: 'c/t',
+/*
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm',
+					defaultDuration: 5,
+					textToSpeechURL: "http://api.voicerss.org/?key=f02cebf4e99c493d8a0048fde8a96278&hl=en-gb&c=ogg&src=",
+					advance: 0,
+					autoplay: false,
+					defaultNotes: false,
+					defaultText: false,
+					playerOpacity: 0.5
+				},
+
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: true
+				},
+
+				keyboard: { 
+					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
+					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+  				},
+*/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu
+					//,RevealAudioSlideshow, RevealAudioRecorder
+					]
+			});
+
+		</script>
+	</body>
+	<div id="background-header">
+		<div style="text-align:left; position:absolute; top:3%; left: 10%; font-size:100%; color:gray">
+			<i>CAA 2023 Amsterdam</i>
+		</div>
+		<div style="text-align:left; position:absolute; top:3%; right: 10%; font-size:100%; color:gray">
+			<b>Angourakis<br>6 April 2023</b>
+		</div>
+		<div style="text-align:right; position:absolute; top:9%; right: 10%; font-size:100%; color:gray">
+			<b><a style="color: darkcyan;" href="https://andros-spica.github.io/
+CAA-Angourakis-2023/">https://andros-spica.github.io/
+CAA-Angourakis-2023/</a></b>
+		</div>
+	</div>
+</html>
